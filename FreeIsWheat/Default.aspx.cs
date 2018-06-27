@@ -20,7 +20,8 @@ namespace FreeIsWheat
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            sql.Setup("den1.mssql5.gear.host", "freewheat", "freewheat", "Gc74_ywb46!H");
+            String[] dbInfo = System.IO.File.ReadAllText(AppDomain.CurrentDomain.BaseDirectory + "/dbInfo.txt").Split(Environment.NewLine.ToCharArray()[0]);
+            sql.Setup(dbInfo[0], dbInfo[1], dbInfo[1], dbInfo[2]);
             LongAd.Controls.Add(LoadControl("LongAdd.ascx"));
 
             if (!(IsPostBack))
